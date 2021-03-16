@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotBehaviour : SteerableBehaviour
+public class ShotEnemyBehaviour : SteerableBehaviour
 {
-    GameManager gm;
+
+    private Vector3 direction;
 
     private int extra_size = 10;
+
+    GameManager gm;
 
     private Vector2 leftBottom;
     private Vector2 rightTop;
@@ -14,22 +17,39 @@ public class ShotBehaviour : SteerableBehaviour
     private Vector2 spriteSize;
     private Vector2 spriteHalfSize;
 
-    private void Start()
-    {
-        gm = GameManager.GetInstance();
 
-        leftBottom = Camera.main.ViewportToWorldPoint(Vector3.zero);
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+      if (collision.CompareTag("Inimigos")) return;
+
+      IDamageable damageable = collision.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+      if (!(damageable is null))
+      {
+          damageable.TakeDamage();
+      }
+      Destroy(gameObject);
+  }
+
+  void Start()
+  {
+      Vector3 posPlayer = GameObject.FindWithTag("Player").transform.position;
+      direction =  (posPlayer - transform.position).normalized;
+      gm = GameManager.GetInstance();
+
+      leftBottom = Camera.main.ViewportToWorldPoint(Vector3.zero);
         rightTop   = Camera.main.ViewportToWorldPoint(Vector3.one);
  
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteSize     = spriteRenderer.bounds.size;
         spriteHalfSize = spriteRenderer.bounds.extents;
-    }
+  }
 
-    private void Update()
-    {
+  void Update()
+  {
+        // Vector3 posPlayer = GameObject.FindWithTag("Player").transform.position;
+        // direction =  (posPlayer - transform.position).normalized;
         if (gm.gameState != GameManager.GameState.GAME) return;
-        Thrust(1, 0);
+        Thrust(direction.x, direction.y);
 
         Vector2 posicaoViewport = Camera.main.WorldToViewportPoint(transform.position);
 
@@ -58,17 +78,11 @@ public class ShotBehaviour : SteerableBehaviour
         {
             Destroy(gameObject);
         }
-    }
+  }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {   
-        if (collision.CompareTag("Player")) return;
-        
-        IDamageable damageable = collision.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
-        if (!(damageable is null))
-        {
-            damageable.TakeDamage();
-        }
-        Destroy(gameObject);
-    }
+  private void OnBecameInvisible()
+  {
+      gameObject.SetActive(false);
+  }
+
 }

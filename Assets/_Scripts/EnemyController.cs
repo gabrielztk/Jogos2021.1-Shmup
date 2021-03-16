@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class EnemyController : SteerableBehaviour, IShooter, IDamageable
 {
+    public GameObject tiro;
+    GameManager gm;
+
+    private void Start()
+    {
+        gm = GameManager.GetInstance();
+    }
 
     public void Shoot()
     {
-        throw new System.NotImplementedException();
+        Instantiate(tiro, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {   
         
-        IDamageable damageable = collision.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
-        if (!(damageable is null))
-        {
-            damageable.TakeDamage();
-        }
+        // IDamageable damageable = collision.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+        // if (!(damageable is null))
+        // {
+        //     damageable.TakeDamage();
+        // }
     }
 
     public void TakeDamage()
@@ -27,6 +34,7 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
 
     public void Die()
     {
+        gm.pontos++;
         Destroy(gameObject);
     }
 

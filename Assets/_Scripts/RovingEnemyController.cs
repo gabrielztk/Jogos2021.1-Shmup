@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VolantBehaviour : SteerableBehaviour, IDamageable
-{
+public class RovingEnemyController : SteerableBehaviour, IDamageable
+{   
     GameManager gm;
+
     private void Start()
     {
         gm = GameManager.GetInstance();
@@ -30,5 +31,4 @@ public class VolantBehaviour : SteerableBehaviour, IDamageable
         gm.pontos++;
         Destroy(gameObject);
     }
-
 }

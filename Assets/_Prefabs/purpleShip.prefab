@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1198106320337777334}
   - component: {fileID: 2096124310341393148}
   - component: {fileID: 5691218095694653535}
+  - component: {fileID: 3314628781721899700}
+  - component: {fileID: 2220673149677553253}
   m_Layer: 0
   m_Name: purpleShip
   m_TagString: Inimigos
@@ -152,7 +154,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -197,6 +199,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   td: {fileID: 11400000, guid: 511b89422c49925408131d36d9c01a65, type: 2}
+--- !u!114 &3314628781721899700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135132268491217557}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ad45e03c79d95448513bc324f4050a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootDelay: 1
+--- !u!114 &2220673149677553253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135132268491217557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1575fc760b1a7b343bbf09bb0b9cb8c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3135132268565077886
 GameObject:
   m_ObjectHideFlags: 0
