@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4875813614872945719}
   - component: {fileID: 2037503203237898391}
   - component: {fileID: 5834713935006000413}
+  - component: {fileID: 8268289605045429889}
   m_Layer: 0
   m_Name: Layered Rock
   m_TagString: Inimigos
@@ -108,3 +109,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4, y: 2.4}
   m_EdgeRadius: 0
+--- !u!114 &8268289605045429889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507362439883083116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb5d20098b125449ae65898af1b5dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  td: {fileID: 11400000, guid: 511b89422c49925408131d36d9c01a65, type: 2}

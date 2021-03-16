@@ -71,6 +71,11 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
         {
         gm.ChangeState(GameManager.GameState.ENDGAME);
         }
+        if (gm.pontos > gm.highScore)
+        {
+            gm.highScore = gm.pontos;
+            PlayerPrefs.SetInt("SavedHighScore", gm.pontos);
+        }
         // Destroy(gameObject);
     }  
 

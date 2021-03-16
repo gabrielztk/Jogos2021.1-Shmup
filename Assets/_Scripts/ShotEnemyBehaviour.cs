@@ -48,6 +48,12 @@ public class ShotEnemyBehaviour : SteerableBehaviour
   {
         // Vector3 posPlayer = GameObject.FindWithTag("Player").transform.position;
         // direction =  (posPlayer - transform.position).normalized;
+        if (gm.gameState == GameManager.GameState.ENDGAME){
+            Destroy(gameObject);
+        }
+        if (gm.gameState == GameManager.GameState.MENU){
+            Destroy(gameObject);
+        }
         if (gm.gameState != GameManager.GameState.GAME) return;
         Thrust(direction.x, direction.y);
 

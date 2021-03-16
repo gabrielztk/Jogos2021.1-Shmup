@@ -24,4 +24,9 @@ public class UI_FimDeJogo : MonoBehaviour
     {
         gm.ChangeState(GameManager.GameState.GAME);
     }
+
+    public void VoltarMenu()
+    {
+        gm.ChangeState(GameManager.GameState.MENU);
+    }
 }

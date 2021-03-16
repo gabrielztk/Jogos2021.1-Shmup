@@ -11,6 +11,7 @@ public class StatePatrulhaPorWaypoints : State
         base.Awake();
         // Configure a transição para outro estado aqui.
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     public void Start()
@@ -27,7 +28,7 @@ public class StatePatrulhaPorWaypoints : State
         if(Vector3.Distance(transform.position, waypoints[1].position) > .1f) {
             Vector3 direction = waypoints[1].position - transform.position;
             direction.Normalize();
-            rb.MovePosition(rb.position + new Vector2(direction.x, direction.y) * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + new Vector2(direction.x, direction.y) * Time.fixedDeltaTime * 2);
         } else {
             waypoints[1].position = GameObject.FindWithTag("Player").transform.position;
         }

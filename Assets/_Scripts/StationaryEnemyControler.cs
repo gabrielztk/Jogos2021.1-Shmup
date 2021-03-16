@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotBehaviour : SteerableBehaviour
+public class StationaryEnemyControler : SteerableBehaviour, IDamageable
 {
     GameManager gm;
-
-    private int extra_size = 10;
+    private int extra_size = 0;
 
     private Vector2 leftBottom;
     private Vector2 rightTop;
@@ -26,17 +25,20 @@ public class ShotBehaviour : SteerableBehaviour
         spriteHalfSize = spriteRenderer.bounds.extents;
     }
 
+    public void TakeDamage()
+    {
+        Die();
+    }
+
+    public void Die()
+    {
+        gm.pontos++;
+        Destroy(gameObject);
+    }
+
+
     private void Update()
     {
-        
-        if (gm.gameState == GameManager.GameState.ENDGAME){
-            Destroy(gameObject);
-        }
-        if (gm.gameState == GameManager.GameState.MENU){
-            Destroy(gameObject);
-        }
-        if (gm.gameState != GameManager.GameState.GAME) return;
-        Thrust(1, 0);
 
         Vector2 posicaoViewport = Camera.main.WorldToViewportPoint(transform.position);
 
@@ -65,17 +67,6 @@ public class ShotBehaviour : SteerableBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {   
-        if (collision.CompareTag("Player")) return;
-        
-        IDamageable damageable = collision.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
-        if (!(damageable is null))
-        {
-            damageable.TakeDamage();
-        }
-        Destroy(gameObject);
+       
     }
 }

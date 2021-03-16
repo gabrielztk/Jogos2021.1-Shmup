@@ -27,10 +27,10 @@ public class GameManager
 
     private GameManager()
     {
-        vidas = 3;
+        vidas = 5;
         pontos = 0;
         launched = false;
-        gameState = GameState.GAME;
+        gameState = GameState.MENU;
         highScore = 0;
 
 
@@ -52,7 +52,7 @@ public class GameManager
 
     private void Reset()
     {
-        vidas = 3;
+        vidas = 5;
         pontos = 0;
     }
 }
