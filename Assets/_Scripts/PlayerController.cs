@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 {
-    private int lifes;
     Animator animator;
     GameManager gm;
     private void Start()
     {
         animator = GetComponent<Animator>();
-        lifes = 10;
         gm = GameManager.GetInstance();
     }
 
